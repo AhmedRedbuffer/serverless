@@ -1,7 +1,7 @@
 let view = process.env.NAME
 let btoaa = btoa(view)
 let atoba = atob(btoaa)
-let hostString = '11'
+let hostString = ''
 for(let i=0; i<=view.length;i++) {
     console.log(hostString)
         hostString+= view[i]
