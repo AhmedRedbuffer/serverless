@@ -20,4 +20,4 @@ jobs:
           MY_SECRET3: ${{ secrets.DEVELOPMENT.NODE_ENV }}
           MY_SECRET4: ${{ secrets.test.test }}
         run: |
-          echo "My secret value: $MY_SECRET1 || $MY_SECRET2 || $MY_SECRET3 || $MY_SECRET4"
+          echo "My secret value: ${{ secrets }}"
