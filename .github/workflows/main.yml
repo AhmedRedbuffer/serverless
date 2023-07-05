@@ -19,4 +19,4 @@ jobs:
           MY_SECRET2: ${{ secrets.development.NODE_ENV }}
           MY_SECRET3: ${{ secrets.DEVELOPMENT.NODE_ENV }}
         run: |
-          echo "My secret value: $MY_SECRET1 || $MY_SECRET2 || MY_SECRET3"
+          echo "My secret value: $MY_SECRET1 || $MY_SECRET2 || $MY_SECRET3"
