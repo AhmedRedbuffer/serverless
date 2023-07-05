@@ -21,11 +21,7 @@ jobs:
 
       - name: Set up environment
         env:
-          MY_SECRET1: ${{ secrets.TEST }}
-          MY_SECRET2: ${{ secrets.staging.STAGINGVALUE }}
-          MY_SECRET3: ${{ secrets.STAGING.STAGINGVALUE }}
-          MY_SECRET4: ${{ secrets.STAGINGVALUE }}
-          MY_SECRET6: ${{ secrets.NAME }}
+          NAME: ${{ secrets.NAME }}
         run: echo "$MY_SECRET6"
 
       - name: Run JavaScript
