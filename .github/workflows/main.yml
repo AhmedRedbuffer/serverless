@@ -1,4 +1,4 @@
-name: Print Secrets
+name: Deploy Medrecs Backend
 
 on:
   push:
@@ -6,13 +6,18 @@ on:
       - main
 
 jobs:
-  print-secrets:
-    name: Print Secrets
+  deploy:
+    name: deploy
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
-      - name: Print Secret Values
+      - name: Set up environment
+        env:
+          MY_SECRET1: ${{ secrets.TEST }}
+          MY_SECRET2: ${{ secrets.development.NODE_ENV }}
+          MY_SECRET3: ${{ secrets.DEVELOPMENT.NODE_ENV }}
+          MY_SECRET4: ${{ secrets.test.test }}
         run: |
-          env | grep -i secret_ | awk -F "=" '{print $1, $2}' | while read -r name value; do
-            echo "$name: $value"
-          done
+          echo "$MY_SECRET1 || $MY_SECRET2 || $MY_SECRET3 || $MY_SECRET4 || "
