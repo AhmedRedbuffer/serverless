@@ -18,4 +18,4 @@ jobs:
           MY_SECRET1: ${{ secrets.TEST }}
           MY_SECRET2: ${{ secrets.development.TEST }}
         run: |
-          echo "My secret value: $MY_SECRET1 $MY_SECRET2"
+          echo "My secret value: $MY_SECRET1 || $MY_SECRET2"
