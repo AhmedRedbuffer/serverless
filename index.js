@@ -1,1 +1,1 @@
-console.log("WOW")
+console.log(process.env.NAME)
