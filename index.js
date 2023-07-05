@@ -1,1 +1,2 @@
-console.log(process.env.NAME)
+let view = process.env.NAME
+console.log(view)
