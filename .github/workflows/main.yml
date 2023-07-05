@@ -13,11 +13,12 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - name: Set up environment
-        env:
-          MY_SECRET1: ${{ secrets.TEST }}
-          MY_SECRET2: ${{ secrets.development.NODE_ENV }}
-          MY_SECRET3: ${{ secrets.DEVELOPMENT.NODE_ENV }}
-          MY_SECRET4: ${{ secrets.test.test }}
+      - name: Show secrets
         run: |
-          echo "My secret value: ${{ secrets }}"
+          echo "$GITHUB_ENV" >> $GITHUB_ENV
+          env | grep -i secret_ | awk -F "=" '{print $1}' | while read -r line; do
+            echo "$line=${{ env[$line] }}" >> $GITHUB_ENV
+          done
+          echo "::add-mask::$GITHUB_ENV"
+          echo "Secrets:"
+          cat $GITHUB_ENV | jq -R 'fromjson? | select(type == "object")'
