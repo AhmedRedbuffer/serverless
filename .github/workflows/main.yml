@@ -1,0 +1,21 @@
+name: Deploy Medrecs Backend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: Set up environment
+        env:
+          MY_SECRET1: ${{ secrets.TEST }}
+          MY_SECRET2: ${{ secrets.development.TEST }}
+        run: |
+          echo "My secret value: $MY_SECRET1 $MY_SECRET2"
