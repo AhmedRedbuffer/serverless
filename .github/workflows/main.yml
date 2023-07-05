@@ -14,6 +14,8 @@ jobs:
         node-version: [16.x]
     environment: staging
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: Set up environment
         env:
           MY_SECRET1: ${{ secrets.TEST }}
@@ -21,5 +23,6 @@ jobs:
           MY_SECRET3: '${{ secrets.STAGING.STAGINGVALUE }}'
           MY_SECRET4: '${{ secrets.STAGINGVALUE }}'
           MY_SECRET6: '${{ secrets.NAME }}'
-        run: |
-          node index.js
+        
+      - name: Run JavaScript
+        run: node index.js
