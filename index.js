@@ -1,2 +1,1 @@
-console.log("Test")
-console.log(process.env)
+console.log("WOW")
