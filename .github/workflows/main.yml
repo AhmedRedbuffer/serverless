@@ -7,22 +7,25 @@ on:
 
 jobs:
   deploy:
-    name: deploy
+    name: Deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
-    environment: staging
+    environment: 
+      name: staging
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Set up environment
         env:
           MY_SECRET1: ${{ secrets.TEST }}
-          MY_SECRET2: '${{ secrets.staging.STAGINGVALUE }}'
-          MY_SECRET3: '${{ secrets.STAGING.STAGINGVALUE }}'
-          MY_SECRET4: '${{ secrets.STAGINGVALUE }}'
-          MY_SECRET6: '${{ secrets.NAME }}'
-        
+          MY_SECRET2: ${{ secrets.staging.STAGINGVALUE }}
+          MY_SECRET3: ${{ secrets.STAGING.STAGINGVALUE }}
+          MY_SECRET4: ${{ secrets.STAGINGVALUE }}
+          MY_SECRET6: ${{ secrets.NAME }}
+
       - name: Run JavaScript
         run: node index.js
