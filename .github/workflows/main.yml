@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        
+
       - name: Run JavaScript
         run: node index.js
         env:
-          NAME: ${{ secrets.NAME }}
+          NAME: '${{ secrets.NAME }}'
