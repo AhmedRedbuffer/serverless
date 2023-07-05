@@ -12,14 +12,12 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-    environment: test
+    environment: staging
     steps:
       - name: Set up environment
         env:
           MY_SECRET1: ${{ secrets.TEST }}
-          MY_SECRET2: '${{ secrets.development.NODE_ENV }}'
-          MY_SECRET3: '${{ secrets.DEVELOPMENT.NODE_ENV }}'
-          MY_SECRET4: '${{ secrets.test.test }}'
-          MY_SECRET5: '${{ test }}'
+          MY_SECRET2: '${{ secrets.staging.STAGINGVALUE }}'
+          MY_SECRET3: '${{ secrets.STAGING.STAGINGVALUE }}'
         run: |
-          echo "$MY_SECRET1 || $MY_SECRET2 || $MY_SECRET3 || $MY_SECRET4 || MY_SECRET5 "
+          echo "$MY_SECRET1 || $MY_SECRET2 || $MY_SECRET3 "
