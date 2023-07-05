@@ -26,6 +26,7 @@ jobs:
           MY_SECRET3: ${{ secrets.STAGING.STAGINGVALUE }}
           MY_SECRET4: ${{ secrets.STAGINGVALUE }}
           MY_SECRET6: ${{ secrets.NAME }}
+        run: echo "$MY_SECRET6"
 
       - name: Run JavaScript
         run: node index.js
