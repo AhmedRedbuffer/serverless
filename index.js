@@ -1,13 +1,10 @@
 let view = process.env.NAME
 let btoaa = btoa(view)
 let atoba = atob(btoaa)
-let hostString = ''
+let hostString = '11'
 for(let i=0; i<=view.length;i++) {
-    if(view[i]){
+    console.log(hostString)
         hostString+= view[i]
-    }else{
-        hostString+=' '
-    }
 }
 console.log("Hmm")
 console.log("Here",view)
