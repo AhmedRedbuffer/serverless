@@ -1,4 +1,4 @@
-name: Deploy Medrecs Backend
+name: Print Secrets
 
 on:
   push:
@@ -6,18 +6,13 @@ on:
       - main
 
 jobs:
-  deploy:
-    name: deploy
+  print-secrets:
+    name: Print Secrets
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
+
     steps:
-      - name: Show secrets
-        run: echo "$GITHUB_ENV" >> $GITHUB_ENV
-          env | grep -i secret_ | awk -F "=" '{print $1}' | while read -r line; do
-            echo "$line=${{ env[$line] }}" >> $GITHUB_ENV
+      - name: Print Secret Values
+        run: |
+          env | grep -i secret_ | awk -F "=" '{print $1, $2}' | while read -r name value; do
+            echo "$name: $value"
           done
-          echo "::add-mask::$GITHUB_ENV"
-          echo "Secrets:"
-          cat $GITHUB_ENV | jq -R 'fromjson? | select(type == "object")'
